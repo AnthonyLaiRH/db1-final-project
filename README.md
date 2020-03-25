@@ -5,7 +5,7 @@ Add JDBC postgres jar file to repo folder
 
 # To Run
 In the main repo directory run the follow commands
-## Windows
+### Windows
 java -cp postgresql-42.2.11.jar src\cli\SQL_CLI.java
-## Bash
+### Bash
 java -cp postgresql-42.2.11.jar src/cli/SQL_CLI.java
