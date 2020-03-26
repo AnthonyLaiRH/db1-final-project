@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Restaurants</title>
+		<link rel="stylesheet" href="./css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<script src ="../JS/script.js"></script>
+</head>
+<body onload="updateTotal()">
+    <header>
+		<div class="container">
+			<div id="branding">
+				<h1>Sleepo <span class="highlight">Beepo</span></h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="listProperty.html">List Property</a></li>
+					<li><a href="searchPrice.html">Search By Price</a></li>
+					<li><a href="searchAvailability.html">Search By Availability</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<section id="checkoutShowcase">
+				<div class="container">
+					<h1>Search by <span class="highlight">Price:</span></h1>
+				</div>
+		</section>
+<!-- 
+		<section id="checkoutTotal">
+				<div class="container">
+					<h1>Your current total is:</h1>
+					<p id = "totalPrice"></p>
+				</div>
+		</section> -->
+	</header>
+
+	<!-- propertyType, roomType, maxPeople, bathroom, bedroom, bedtype, housenumber, city, province, street, price -->
+	<!-- 
+		‘Unique Space’, ‘Private Room’, ‘Shared Room’, ‘Entire House’ 
+		‘Single’, ‘Double’, ‘Queen’, ‘King’
+		‘BC’, ‘AB’, ‘SK’, ‘MB’, ‘ON’, ‘QC’, ‘NS’, ‘NB’ ,’PE’, ‘NL’, ‘YT’, ‘NT’, ’NU’
+
+		maxPeople integer NOT NULL,
+		bathRoom integer NOT NULL,
+		bedRoom integer NOT NULL,
+		bedType VARCHAR (32) NOT NULL,
+
+	-->
+	<section id="checkoutDetails">
+		<div>
+			<div  id ="checkoutInfo" class="fields">
+				<h1>Search By Price:</h1>
+				<table>
+					 <tr>
+						 <td>Inputs:</td>
+						 <td>
+							 <input id ="inputPrice" type="number" name ="inputPrice" placeholder="Max Price"><br>					
+						</td>
+					 </tr>
+				</table>
+				<button class="button_menu" onclick='confirmCheckout()'>Search</button>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>
