@@ -95,8 +95,8 @@ public class SQL_CLI {
 
             } catch (SQLException e) {
                 try {
-                    System.out.println("\n >> Connection failed. ");
                     e.printStackTrace();
+                    System.out.println("\n >> Connection failed. ");
                     System.out.print(" >> Retry? (Y/N) ");
                     String retry = this.br.readLine().trim().toLowerCase();
                     if (retry.equals("n")) {
