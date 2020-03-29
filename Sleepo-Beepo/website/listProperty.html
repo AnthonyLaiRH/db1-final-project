@@ -17,7 +17,7 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="listProperty.html">List Property</a></li>
+					<li><a href="addProperty.html">Add Property</a></li>
 					<li><a href="searchPrice.html">Search By Price</a></li>
 					<li><a href="searchAvailability.html">Search By Availability</a></li>
 				</ul>
@@ -26,7 +26,7 @@
 
 		<section id="checkoutShowcase">
 				<div class="container">
-					<h1>List a new <span class="highlight">Property:</span></h1>
+					<h1>Existing <span class="highlight">Properties:</span></h1>
 				</div>
 		</section>
 <!-- 
@@ -53,90 +53,8 @@
 	<section id="checkoutDetails">
 		<div>
 			<div  id ="checkoutInfo" class="fields">
-				<h1>Property Details:</h1>
-				<table>
-					 <tr>
-						 <td>Property Type</td>
-						 <td>
-						 	<select id="propertyType">
-							<option value ="Apartment">Apartment</option>
-							<option value="B&B">B&B</option>
-							<option value="Unique Home">Unique Home</option>
-							<option value="Vacation Home">Vacation Home</option>
-						</select></td><br>
-					 </tr>
-					 <tr>
-						<td>Room Type</td>
-						<td>
-						 <select id="roomType">
-							<option value ="Unique Space">Unique Space</option>
-							<option value="Private Room">Private Room</option>
-							<option value="Shared Room">Shared Room</option>
-							<option value="Entire House">Entire House</option>
-						</select></td><br>
-					</tr>
-					 <tr>
-						 <td>Property <br>Address:</td>
-						 <td>
-							 <input id ="checkoutField1" type="number" name ="houseNumber" placeholder="House Number"><br>
-							 <input id ="checkoutField2" type="text" name ="address" placeholder="Street Name"><br>
-							 <input id="checkoutField3" type="text" name ="city" placeholder ="City"><br>					
-						</td>
-						
-					 </tr>
-					 <tr>
-						<td>Province</td>
-							<td>
-								<select id="province">
-									<option value ="BC">BC</option>
-									<option value="AB">AB</option>
-									<option value="SK">SK</option>
-									<option value="MB">MB</option>
-									<option value="ON">ON</option>
-									<option value="QC">QC</option>
-									<option value="NS">NS</option>
-									<option value="NB">NB</option>
-									<option value="PE">PE</option>
-									<option value="NL">NL</option>
-									<option value="YT">YT</option>
-									<option value="NT">NT</option>
-									<option value="NU">NU</option>
-
-								</select>	
-							</td>
-					 </tr>
-					 <tr>
-						<td>Number of Bedroom(s)</td>
-						<td>
-							<input id ="numBed" type="number" name ="numBedroom" placeholder="Number of Bedrooms"><br>				
-					   </td>
-					</tr>
-					 <tr>
-						<td>Number of Bathroom(s)</td>
-						<td>
-							<input id="numBath" type="number" placeholder="Number of Bathrooms">
-					
-					   </td>
-					</tr>
-					<tr>
-						<td>Maximum Occupancy</td>
-							<td>
-								<input id="maxPpl" type="number" placeholder="Maximum Occupancy">
-						   </td>
-						</tr>
-					</tr>
-					<tr>
-						<td>Bed Type</td>
-						<td>
-						 <select id="roomType">
-							<option value ="Single Bed">Single Bed</option>
-							<option value="Double Bed">Double Bed</option>
-							<option value="Queen Bed">Queen Bed</option>
-							<option value="King Bed">King Bed</option>
-						</select></td><br>
-					</tr>
-				</table>
-				<button class="button_menu" onclick='confirmCheckout()'>List Property</button>
+				<h1>Properties:</h1>
+				<button class="button_menu" onclick='confirmList()'>List Property</button>
 			</div>
 		</div>
 

@@ -166,7 +166,7 @@ ray={
 
 function confirmCheckout(){
     if(validateCheckout()){
-        $('#checkoutInfo').html('<h1>Checkout Confirmed</h1><button class="button_menu">Return Home</button>');
+        $('#checkoutInfo').html('<h1>Request Confirmed</h1><button class="button_menu">Return Home</button>');
         $('.button_menu').on('click',function(){
             window.location.href="index.html"
         });
@@ -181,4 +181,13 @@ function validateCheckout(){
     }else{
         return true;
     }
+}
+
+function confirmList(){
+    $('#checkoutInfo').html('<h1>Listing...</h1><button class="button_menu">Return Home</button>');
+    $('.button_menu').on('click',function(){
+        window.location.href="listProperty.html"
+    });
+    let orderArray={};
+    localStorage.setItem("orderArray", JSON.stringify(orderArray));
 }

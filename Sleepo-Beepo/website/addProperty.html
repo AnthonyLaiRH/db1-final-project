@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Restaurants</title>
+		<link rel="stylesheet" href="./css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<script src ="../JS/script.js"></script>
+</head>
+<body onload="updateTotal()">
+    <header>
+		<div class="container">
+			<div id="branding">
+				<h1>Sleepo <span class="highlight">Beepo</span></h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="addProperty.html">Add Property</a></li>
+					<li><a href="searchPrice.html">Search By Price</a></li>
+					<li><a href="searchAvailability.html">Search By Availability</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<section id="checkoutShowcase">
+				<div class="container">
+					<h1>Add a new <span class="highlight">Property:</span></h1>
+				</div>
+		</section>
+<!-- 
+		<section id="checkoutTotal">
+				<div class="container">
+					<h1>Your current total is:</h1>
+					<p id = "totalPrice"></p>
+				</div>
+		</section> -->
+	</header>
+
+	<!-- propertyType, roomType, maxPeople, bathroom, bedroom, bedtype, housenumber, city, province, street, price -->
+	<!-- 
+		‘Unique Space’, ‘Private Room’, ‘Shared Room’, ‘Entire House’ 
+		‘Single’, ‘Double’, ‘Queen’, ‘King’
+		‘BC’, ‘AB’, ‘SK’, ‘MB’, ‘ON’, ‘QC’, ‘NS’, ‘NB’ ,’PE’, ‘NL’, ‘YT’, ‘NT’, ’NU’
+
+		maxPeople integer NOT NULL,
+		bathRoom integer NOT NULL,
+		bedRoom integer NOT NULL,
+		bedType VARCHAR (32) NOT NULL,
+
+	-->
+	<section id="checkoutDetails">
+		<div>
+			<div  id ="checkoutInfo" class="fields">
+				<h1>Property Details:</h1>
+				<table>
+					 <tr>
+						 <td>Property Type</td>
+						 <td>
+						 	<select id="propertyType">
+							<option value ="Apartment">Apartment</option>
+							<option value="B&B">B&B</option>
+							<option value="Unique Home">Unique Home</option>
+							<option value="Vacation Home">Vacation Home</option>
+						</select></td><br>
+					 </tr>
+					 <tr>
+						<td>Room Type</td>
+						<td>
+						 <select id="roomType">
+							<option value ="Unique Space">Unique Space</option>
+							<option value="Private Room">Private Room</option>
+							<option value="Shared Room">Shared Room</option>
+							<option value="Entire House">Entire House</option>
+						</select></td><br>
+					</tr>
+					 <tr>
+						 <td>Property <br>Address:</td>
+						 <td>
+							 <input id ="checkoutField1" type="number" name ="houseNumber" placeholder="House Number"><br>
+							 <input id ="checkoutField2" type="text" name ="address" placeholder="Street Name"><br>
+							 <input id="checkoutField3" type="text" name ="city" placeholder ="City"><br>					
+						</td>
+						
+					 </tr>
+					 <tr>
+						<td>Province</td>
+							<td>
+								<select id="province">
+									<option value ="BC">BC</option>
+									<option value="AB">AB</option>
+									<option value="SK">SK</option>
+									<option value="MB">MB</option>
+									<option value="ON">ON</option>
+									<option value="QC">QC</option>
+									<option value="NS">NS</option>
+									<option value="NB">NB</option>
+									<option value="PE">PE</option>
+									<option value="NL">NL</option>
+									<option value="YT">YT</option>
+									<option value="NT">NT</option>
+									<option value="NU">NU</option>
+
+								</select>	
+							</td>
+					 </tr>
+					 <tr>
+						<td>Number of Bedroom(s)</td>
+						<td>
+							<input id ="numBed" type="number" name ="numBedroom" placeholder="Number of Bedrooms"><br>				
+					   </td>
+					</tr>
+					 <tr>
+						<td>Number of Bathroom(s)</td>
+						<td>
+							<input id="numBath" type="number" placeholder="Number of Bathrooms">
+					
+					   </td>
+					</tr>
+					<tr>
+						<td>Maximum Occupancy</td>
+							<td>
+								<input id="maxPpl" type="number" placeholder="Maximum Occupancy">
+						   </td>
+						</tr>
+					</tr>
+					<tr>
+						<td>Bed Type</td>
+						<td>
+						 <select id="roomType">
+							<option value ="Single Bed">Single Bed</option>
+							<option value="Double Bed">Double Bed</option>
+							<option value="Queen Bed">Queen Bed</option>
+							<option value="King Bed">King Bed</option>
+						</select></td><br>
+					</tr>
+				</table>
+				<button class="button_menu" onclick='confirmCheckout()'>List Property</button>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>
