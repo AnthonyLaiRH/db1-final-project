@@ -79,21 +79,24 @@ public class SQL_CLI {
 
             try {
                 //this.connection = DriverManager.getConnection(url, user, String.copyValueOf(password));
-                this.connection = DriverManager.getConnection(url, user, password);
+                if (user.equals("") && password.equals("")) {
+                    this.connection = DriverManager.getConnection(url);
+                    this.url = url;
+                    this.user = "user";
+                    this.password = password;
+                }else{
+                    this.connection = DriverManager.getConnection(url, user, password);
+                    this.url = url;
+                    this.user = user;
+                    this.password = password;
+                }
 
                 completed = true;
 
-                this.url = url;
-                this.user = user;
-                //this.password = String.copyValueOf(password);
-                this.password = password;
-
-                System.out.println(password);
-
             } catch (SQLException e) {
                 try {
+                    e.printStackTrace();
                     System.out.println("\n >> Connection failed. ");
-                    //e.printStackTrace();
                     System.out.print(" >> Retry? (Y/N) ");
                     String retry = this.br.readLine().trim().toLowerCase();
                     if (retry.equals("n")) {
