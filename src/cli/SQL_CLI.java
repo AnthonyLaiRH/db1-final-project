@@ -168,8 +168,9 @@ public class SQL_CLI {
                 if (tableName.equals("\\q")) {
                     completed = true;
                     System.out.println("\nExiting Show Table mode.");
+                }else {
+                    DBTablePrinter.printTable(this.connection, tableName);
                 }
-                DBTablePrinter.printTable(this.connection, tableName);
             }catch (IOException e){
                 e.printStackTrace();
             }
@@ -181,10 +182,10 @@ public class SQL_CLI {
         boolean toQuery = true;
         StringBuilder query = new StringBuilder();
 
-        System.out.println("\nEnter your SQL Query in full and end in a ; OR " +
-                "\ntype \\q  to quit out of SQL mode" );
+        System.out.println("\nEnter your SQL Query in full and end in a ; " +
+                "\ntype \\q  to quit out of SQL mode\n" );
         do{
-            System.out.print("\n > ");
+            System.out.print(" > ");
             String line;
             try {
                 line = this.br.readLine().trim().toLowerCase();
@@ -196,23 +197,34 @@ public class SQL_CLI {
                     System.out.println("\nExiting SQL mode.");
                 }
                 query.append(line);
+                query.append(" ");
             }catch (IOException e) {
                 e.printStackTrace();
             }
         }while(!completed);
 
-        if (toQuery) sendQuery(query.toString());
+
+        if (toQuery) sendQuery(query.toString().trim());
     }
 
     public boolean sendQuery(String query){
         ResultSet rs;
+
         try{
             Statement st = this.connection.createStatement();
+            //System.out.println(query);
             rs = st.executeQuery(query);
         }catch(SQLException e){
-            //e.printStackTrace();
-            return false;
+            if (e.getSQLState().equals("02000")){
+                return true;
+            }else {
+                //e.printStackTrace();
+                System.out.println("SQL STATE: " + e.getSQLState());
+                System.out.println("MSG: " + e.getMessage());
+                return false;
+            }
         }
+
         DBTablePrinter.printResultSet(rs);
         return true;
     }
