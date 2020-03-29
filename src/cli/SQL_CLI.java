@@ -126,7 +126,7 @@ public class SQL_CLI {
                 break;
 
             case "sql":
-                fullSQL();
+                customSQL();
                 break;
 
             case "show":
@@ -177,9 +177,9 @@ public class SQL_CLI {
         }while(!completed);
     }
 
-    public void fullSQL(){
+    public void customSQL(){
         boolean completed = false;
-        boolean toQuery = true;
+        boolean toQuery = false;
         StringBuilder query = new StringBuilder();
 
         System.out.println("\nEnter your SQL Query in full and end in a ; " +
@@ -190,21 +190,28 @@ public class SQL_CLI {
             try {
                 line = this.br.readLine().trim().toLowerCase();
                 if (line.substring(line.length()-1).equals(";")) {
-                    completed = true;
+                    toQuery = true;
                 }else if (line.equals("\\q")){
                     completed = true;
-                    toQuery = false;
                     System.out.println("\nExiting SQL mode.");
                 }
                 query.append(line);
                 query.append(" ");
+
+                if (toQuery) {
+                    sendQuery(query.toString().trim());
+                    query.delete(0, query.length());
+                    toQuery = false;
+                }
             }catch (IOException e) {
                 e.printStackTrace();
+            }catch (IndexOutOfBoundsException ex) {
+                continue;
             }
         }while(!completed);
 
 
-        if (toQuery) sendQuery(query.toString().trim());
+
     }
 
     public boolean sendQuery(String query){
@@ -233,12 +240,6 @@ public class SQL_CLI {
 
     public static void main(String[] args){
         SQL_CLI program = new SQL_CLI();
-
-        /*if (program.console == null){
-            System.out.println(" >> Please run this application in a command line interface, terminal or console. ");
-            program.dispose();
-        }else {*/
-            program.run();
-        //}
+        program.run();
     }
 }
