@@ -137,10 +137,26 @@ public class SQL_CLI {
                 break;
 
             case "select":
-                //select();
+                selectMode();
                 System.out.println(" >> Select ");
                 break;
+
             case "update":
+
+                break;
+
+            case "insert":
+
+                break;
+
+            case "delete":
+                break;
+
+            case "create":
+                break;
+
+            case "drop":
+                break;
 
             case "exit":
                 this.active = false;
@@ -151,10 +167,27 @@ public class SQL_CLI {
     public void displayHelp(){
         System.out.println("\nEnter one of the following commands at follow the prompt" +
                 "\n - sql " +
+                "\n - show " +
                 "\n - select " +
                 "\n - update " +
-                "\n - delete or drop" +
+                "\n - insert " +
+                "\n - delete " +
+                "\n - create " +
+                "\n - drop " +
                 "\n");
+    }
+
+    private String read(){
+        System.out.print(" > \n");
+        String line;
+        try {
+            line = this.br.readLine().trim().toLowerCase();
+        }catch (IOException e){
+            line = null;
+            System.out.println("Failed to read line. ");
+            //e.printStackTrace();
+        }
+        return line;
     }
 
     public void showTable(){
@@ -164,18 +197,12 @@ public class SQL_CLI {
                 "\ntype \\q  to quit out of Show Table mode");
 
         do{
-            try {
-                System.out.print("\n > ");
-                String tableName = this.br.readLine().trim().toLowerCase();
-
-                if (tableName.equals("\\q")) {
-                    completed = true;
-                    System.out.println("\nExiting Show Table mode.");
-                }else {
-                    DBTablePrinter.printTable(this.connection, tableName);
-                }
-            }catch (IOException e){
-                e.printStackTrace();
+            String tableName = read();
+            if (tableName.equals("\\q")) {
+                completed = true;
+                System.out.println("\nExiting Show Table mode.");
+            }else {
+                DBTablePrinter.printTable(this.connection, tableName);
             }
         }while(!completed);
     }
@@ -188,10 +215,9 @@ public class SQL_CLI {
         System.out.println("\nEnter your SQL Query in full and end in a ; " +
                 "\ntype \\q  to quit out of SQL mode\n" );
         do{
-            System.out.print(" > ");
-            String line;
+            String line = read();
+            if (line == null) continue;
             try {
-                line = this.br.readLine().trim().toLowerCase();
                 if (line.substring(line.length()-1).equals(";")) {
                     toQuery = true;
                 }else if (line.equals("\\q")){
@@ -206,15 +232,60 @@ public class SQL_CLI {
                     query.delete(0, query.length());
                     toQuery = false;
                 }
-            }catch (IOException e) {
-                e.printStackTrace();
             }catch (IndexOutOfBoundsException ex) {
                 continue;
             }
         }while(!completed);
+    }
+
+    public void selectMode(){
+        boolean completed = false;
+        boolean toQuery = false;
+
+        System.out.println("\nFollow the prompts as follows " +
+                "\ntype \\q  to quit out of Select mode\n" );
+        //do{
+            String query = formSelectQuery();
+            sendQuery(query.toString().trim());
+        //}while(!completed);
+    }
+
+    public String formSelectQuery(){
+        StringBuilder query = new StringBuilder();
+
+        System.out.println("SELECT which attributes? (Separate with commas OR use * for all)");
+        String attributes = read() + " ";
+        System.out.println("FROM which table?");
+        String baseTable = read() + " ";
+        System.out.println("JOIN with any table? Leave blank if otherwise");
+        String joinTable = read()+ " ";
+        String joinType = "", onAtt = "";
+        if (!joinTable.equals("")) {
+            System.out.println("Please specify INNER, LEFT, RIGHT or FULL JOIN ");
+            joinType = read() + " ";
+            System.out.println("ON what attributes to join? ");
+            onAtt = read() + " ";
+        }
+        System.out.println("WHERE conditional?");
+        String whereCondition = read();
 
 
+        query.append("SELECT");
+        query.append(attributes);
+        query.append("FROM");
+        query.append(baseTable);
+        if (!joinTable.equals("")){
+            query.append(joinType);
+            query.append("JOIN");
+            query.append(joinTable);
+            query.append("ON");
+            query.append(onAtt);
+        }
+        query.append("WHERE");
+        query.append(whereCondition);
+        query.append(";");
 
+        return query.toString().trim();
     }
 
     public boolean sendQuery(String query){
@@ -238,7 +309,6 @@ public class SQL_CLI {
         DBTablePrinter.printResultSet(rs);
         return true;
     }
-
 
 
     public static void main(String[] args){
