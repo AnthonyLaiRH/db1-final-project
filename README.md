@@ -1,13 +1,19 @@
 # CSI2132 - Project
 
 # Setup
-Add JDBC postgres jar file to repo folder
+Be sure to change the user, database, password variables in the queries.js to the appropriate database and credentials 
 
-# To Run
-In the main repo directory run the follow commands
-### Windows
-javac src\cli\SQL_CLI.java
-java -cp postgresql-42.2.11.jar src\cli\SQL_CLI.java
-### Bash
-javac src/cli/SQL_CLI.java
-java -cp postgresql-42.2.11.jar src/cli/SQL_CLI.java
+# To Run Web Page
+Make sure node and npm are installed
+Enter the Sleepo-Beepo directory
+
+Use the commands
+`npm install
+npm start`
+The web page will be served to localhost:4000
+
+# To Run CLI
+Make sure the JDBC postgres jar file is in the project repo on the top directory
+We used postgresql-42.2.11.jar
+
+Then simply run in an IDE of choice
