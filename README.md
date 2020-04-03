@@ -12,7 +12,7 @@
 `npm install` then
 `npm start`
 
-- The web page will be served to localhost:4000
+- The web page will be served to localhost:4000 and localhost:4000/listAll to list all properties
 
 # To Run CLI
 - Make sure the JDBC postgres jar file is in the project repo on the top directory
