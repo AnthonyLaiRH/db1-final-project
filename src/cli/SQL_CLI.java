@@ -64,9 +64,11 @@ public class SQL_CLI {
         do {
             String url = "", user = "", password = "";
             try {
-                System.out.print("\nEnter the name of the database to connect to: ");
+                System.out.print("\nEnter the port of the database on localhost: ");
+                String port = this.br.readLine().trim();
+                System.out.print("Enter the name of the database to connect to: ");
                 //String url = "jdbc:postgresql://localhost:5432/" + this.console.readLine().trim();
-                url = "jdbc:postgresql://localhost:5432/" + this.br.readLine().trim();
+                url = "jdbc:postgresql://localhost:" + port + "/" + this.br.readLine().trim();
                 System.out.print("Enter user name: ");
                 user = this.br.readLine().trim();
                 //String user = this.br.readLine().trim();
@@ -166,15 +168,16 @@ public class SQL_CLI {
 
     public void displayHelp(){
         System.out.println("\nEnter one of the following commands at follow the prompt" +
-                "\n - sql " +
-                "\n - show " +
-                "\n - select " +
-                "\n - update " +
-                "\n - insert " +
-                "\n - delete " +
-                "\n - create " +
-                "\n - drop " +
-                "\n");
+                "\n - sql || This mode will allow you to run any full custom SQL queries" +
+                "\n - show || This mode will display any table in the database"
+                );
+//                "\n - select || This mode provides a simplied way to run a SELECT query on the database" +
+//                "\n - update - in development" +
+//                "\n - insert - in development" +
+//                "\n - delete - in development" +
+//                "\n - create - in development" +
+//                "\n - drop - in development" +
+//                "\n");
     }
 
     private String read(){
