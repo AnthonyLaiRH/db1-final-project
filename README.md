@@ -5,11 +5,13 @@ Be sure to change the user, database, password variables in the queries.js to th
 
 # To Run Web Page
 Make sure node and npm are installed
+
 Enter the Sleepo-Beepo directory
 
 Use the commands
-`npm install
-npm start`
+`npm install` then
+`npm start`
+
 The web page will be served to localhost:4000
 
 # To Run CLI
