@@ -5,13 +5,15 @@
   "main": "JS/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node JS/server.js"
+    "start-server": "node server-js/server.js",
+    "start": "open-cli http://localhost:4000 & node server-js/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "open-cli": "^6.0.1"
   },
   "dependencies": {
     "cors": "^2.8.5",

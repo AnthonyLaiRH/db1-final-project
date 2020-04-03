@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const server = express();
+const path = require('path');
 const port = 4000;
 
 const db = require('./queries')
 
 server.use(cors());
+server.use(express.static(path.resolve(__dirname, '../website')));
 
 server.use(bodyParser.json())
 server.use(
@@ -15,8 +17,17 @@ server.use(
   })
 )
 
-server.get('/', (request, response) => {
-    response.json({ info: 'Node.js, Express, and Postgres API' })
+server.get('/', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../website/searchAvailability.html'));
+}); 
+
+server.get('/listAll', function(request, response) {
+  response.sendFile(path.resolve(__dirname, '../website/listProperty.html'));
+});
+
+server.get('/info', (request, response) => {
+  response.send();
+  response.json({ info: 'Node.js, Express, and Postgres API' })
 });
 
 server.listen(port, () => {
