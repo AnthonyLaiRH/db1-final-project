@@ -178,7 +178,7 @@ public class SQL_CLI {
     }
 
     private String read(){
-        System.out.print(" > \n");
+        System.out.print(" > ");
         String line;
         try {
             line = this.br.readLine().trim().toLowerCase();
