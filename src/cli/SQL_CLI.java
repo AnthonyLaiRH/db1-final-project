@@ -8,9 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import java.sql.* ;  // for standard JDBC programs
-import java.math.* ; // for BigDecimal and BigInteger support
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class SQL_CLI {
 
