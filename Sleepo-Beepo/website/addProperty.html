@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="./css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src ="../JS/script.js"></script>
+		
 </head>
 <body onload="updateTotal()">
     <header>
@@ -108,13 +109,13 @@
 					 <tr>
 						<td>Number of Bedroom(s)</td>
 						<td>
-							<input id ="numBed" type="number" name ="numBedroom" placeholder="Number of Bedrooms"><br>				
+							<input id ="numBed" type="number" name ="numBedroom" placeholder="Number of Bedrooms" min="0"><br>				
 					   </td>
 					</tr>
 					 <tr>
 						<td>Number of Bathroom(s)</td>
 						<td>
-							<input id="numBath" type="number" placeholder="Number of Bathrooms">
+							<input id="numBath" type="number" placeholder="Number of Bathrooms" min="0">
 					
 					   </td>
 					</tr>
@@ -128,11 +129,11 @@
 					<tr>
 						<td>Bed Type</td>
 						<td>
-						 <select id="roomType">
-							<option value ="Single Bed">Single Bed</option>
-							<option value="Double Bed">Double Bed</option>
-							<option value="Queen Bed">Queen Bed</option>
-							<option value="King Bed">King Bed</option>
+						 <select id="bedType">
+							<option value ="Single">Single Bed</option>
+							<option value="Double">Double Bed</option>
+							<option value="Queen">Queen Bed</option>
+							<option value="King">King Bed</option>
 						</select></td><br>
 					</tr>
 					<tr>
@@ -140,35 +141,41 @@
 						<td>
 						 <select id="amenity1">
 							<option value ="none">None</option>
-							<option value ="pool">Pool</option>
-							<option value="gym">Gym</option>
-							<option value="partyRoom">Party Room</option>
-							<option value="airConditioning">Air Conditioning</option>
-							<option value="laundry">Laundry</option>
-							<option value="petFriendly">Pet Friendly</option>
+							<option value ="Pool">Pool</option>
+							<option value="Gym">Gym</option>
+							<option value="PartyRoom">Party Room</option>
+							<option value="AirConditioning">Air Conditioning</option>
+							<option value="Laundry">Laundry</option>
+							<option value="PetFriendly">Pet Friendly</option>
 						</select><br>
 						<select id="amenity2">
 							<option value ="none">None</option>
-							<option value ="pool">Pool</option>
-							<option value="gym">Gym</option>
-							<option value="partyRoom">Party Room</option>
-							<option value="airConditioning">Air Conditioning</option>
-							<option value="laundry">Laundry</option>
-							<option value="petFriendly">Pet Friendly</option>
+							<option value ="Pool">Pool</option>
+							<option value="Gym">Gym</option>
+							<option value="PartyRoom">Party Room</option>
+							<option value="AirConditioning">Air Conditioning</option>
+							<option value="Laundry">Laundry</option>
+							<option value="PetFriendly">Pet Friendly</option>
 						</select><br>
 						<select id="amenity3">
 							<option value ="none">None</option>
-							<option value ="pool">Pool</option>
-							<option value="gym">Gym</option>
-							<option value="partyRoom">Party Room</option>
-							<option value="airConditioning">Air Conditioning</option>
-							<option value="laundry">Laundry</option>
-							<option value="petFriendly">Pet Friendly</option>
+							<option value ="Pool">Pool</option>
+							<option value="Gym">Gym</option>
+							<option value="PartyRoom">Party Room</option>
+							<option value="AirConditioning">Air Conditioning</option>
+							<option value="Laundry">Laundry</option>
+							<option value="PetFriendly">Pet Friendly</option>
 						</select><br>
 					</td><br>
 					</tr>
+					<tr>
+						<td>Price per night</td>
+						<td>
+							<input id ="price" type="number" name ="price" placeholder="Price" min="0"><br>				
+					   </td>
+					</tr>
 				</table>
-				<button class="button_menu" onclick='confirmCheckout()'>List Property</button>
+				<button class="button_menu" onclick='postProperty()'>List Property</button>
 			</div>
 		</div>
 

@@ -299,7 +299,7 @@ footer{
   background-color: #26282b;
   margin:40px auto 50px auto;
   height:auto;
-  width: 550px;
+  width: 100%;
   text-align:center;
   padding-top:50px;
   color:white;
@@ -311,7 +311,7 @@ footer{
 }
 
 #checkoutDetails td{
-  padding:15px;
+  padding:10px;
 }
 
 #checkoutDetails input{
