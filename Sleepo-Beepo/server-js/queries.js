@@ -57,13 +57,7 @@ const getPropertiesByAvailability = (request, response) => {
 const addProperty = (request, response) => {
     const params = request.body
     console.log(request.body)
-    var propertyInfo = '1, \'' + params.propertyType + '\', \'' 
-                        + params.roomType + '\', ' + params.maxPpl + ', '
-                        + params.numBath + ', ' + params.numBed + ', \''
-                        + params.bedType + '\', ' + params.houseNumber + ', \''
-                        + params.city + '\', \'' + params.province + '\', \'' 
-                        + params.street + '\''
-
+  
     var hostId = 1;
     var propertyType = params.propertyType ;
     var roomType = params.roomType;
@@ -78,9 +72,6 @@ const addProperty = (request, response) => {
 
     var propertyId;
 
-    console.log (propertyInfo);
-    //console.log(params.amenity1);
-
     var text = 'INSERT INTO property (hostId, propertyType, roomType, maxPeople, ' +
                   'bathroom, bedroom, bedtype, housenumber, city, province, street) ' +
                   'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) ' +
@@ -91,10 +82,9 @@ const addProperty = (request, response) => {
       if (error) {
         throw error
       }
-      //console.log(results.rows[0].propertyid);
       propertyId = results.rows[0].propertyid;
       insertPriceAndAmenities(propertyId, params.price, params.amenity1, params.amenity2, params.amenity3);
-      //response.status(201).send(`Added Property`)
+      response.status(201).send(`Added Property`)
     });
   }
 
@@ -138,7 +128,7 @@ const addProperty = (request, response) => {
       if (error) {
         throw error
       }
-      //response.status(201).send(`Added Amenity`)                
+      response.status(201).send(`Added Price and Three Amenities`)                
     });
   }
 
