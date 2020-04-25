@@ -7,6 +7,8 @@ const port = 4000;
 
 const db = require('./queries')
 
+require('dotenv').config()
+
 server.use(cors());
 server.use(express.static(path.resolve(__dirname, '../website')));
 
