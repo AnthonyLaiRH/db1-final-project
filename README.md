@@ -1,7 +1,7 @@
 # CSI2132 - Project
 
 # Setup
-- Be sure to change the user, database, password variables in the queries.js to the appropriate database and credentials 
+Be sure to add a `.env` file of your own with DB_USER, DB_HOST, DB_NAME, DB_PWD, and DB_PORT variables matched with those in the queries.js file for your own PostgreSQL database
 
 # To Run Web Page
 - Make sure node and npm are installed
